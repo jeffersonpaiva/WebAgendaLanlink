@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebAgendaLanlink.Models.Pessoa>
+
+@{
+    ViewData["Title"] = "Web Agenda";
+}
+
+<h2>Pessoas Cadastradas</h2>
+
+<p>
+    <a class="btn btn-info" asp-action="Details">Novo Cadastro <i class="fas fa-user-plus"></i></a>
+</p>
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">Detalhes</div>
+    <div class="panel-body">
+        <table class="table table-hover" id="table_index">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th></th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td style="width:15%">
+                            <a class="btn btn-info" asp-action="Details" asp-route-PessoaId="@item.PessoaId" title="Detalhes"> Detalhes <i class="fas fa-info-circle"></i></a>
+
+                          
+                        </td>
+                        <td style="width:15%">
+                            <button class="btn btn-danger" href="#" onclick="fncRemoverCadastro(@item.PessoaId)" title="Remover">
+                                Excluir <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+

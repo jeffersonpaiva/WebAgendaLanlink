@@ -1,0 +1,331 @@
+﻿@using WebAgendaLanlink.Models
+@model Geral
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+
+
+<div class="container">
+    <div class="row">
+
+        <input type="hidden" id="idPessoa" value="@Model.PessoaId" />
+
+
+        <div class="panel panel-info">
+            <div class="panel-heading">Detalhes</div>
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label for="inputNome">Nome</label>
+                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" value="@Model.Nome">
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Endereços</div>
+
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Endereço</label>
+                                    <div class="input">
+
+                                        <input type="text" id="InputEnd" name="" value="" class="form-control " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Numero</label>
+                                    <div class="input">
+
+
+                                        <input type="text" id="InputNum" name="" value="" class="form-control " />
+
+                                    </div><!-- /.input group -->
+                                </div><!-- /.form group -->
+                            </div>
+                            <div class="col-md-3">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Complemento:</label>
+                                    <div class="input">
+
+
+
+                                        <input type="text" id="InputComple" name="" value="" class="form-control " />
+
+                                    </div><!-- /.input group -->
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Bairro:</label>
+                                    <div class="input">
+
+                                        <input type="text" id="InputBairro" name="" value="" class="form-control " />
+
+
+
+                                    </div><!-- /.input group -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+
+                            <div class="col-md-4">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Cidade</label>
+                                    <div class="input">
+
+
+                                        <input type="text" id="InputCidade" name="" value="" class="form-control " />
+
+                                    </div><!-- /.input group -->
+                                </div><!-- /.form group -->
+                            </div>
+                            <div class="col-md-2">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>UF:</label>
+                                    <div class="input">
+                                        <select name="InputUF" class="form-control" id="InputUF">
+                                            <option value="AC">AC - Acre</option>
+                                            <option value="AL">AL - Alagoas</option>
+                                            <option value="AP">AP - Amapá</option>
+                                            <option value="AM">AM - Amazonas</option>
+                                            <option value="BA">BA - Bahia</option>
+                                            <option value="CE" selected>CE - Ceará</option>
+                                            <option value="DF">DF - Distrito Federal</option>
+                                            <option value="ES">ES - Espírito Santo</option>
+                                            <option value="GO">GO - Goiás</option>
+                                            <option value="MA">MA - Maranhão</option>
+                                            <option value="MT">MT - Mato Grosso</option>
+                                            <option value="MS">MS - Mato Grosso do Sul</option>
+                                            <option value="MG">MG - Minas Gerais</option>
+                                            <option value="PA">PA - Pará</option>
+                                            <option value="PB">PB - Paraíba</option>
+                                            <option value="PR">PR - Paraná</option>
+                                            <option value="PE">PE - Pernambuco</option>
+                                            <option value="PI">PI - Piauí</option>
+                                            <option value="RJ">RJ - Rio de Janeiro</option>
+                                            <option value="RN">RN - Rio Grande do Norte</option>
+                                            <option value="RS">RS - Rio Grande do Sul</option>
+                                            <option value="RO">RO - Rondônia</option>
+                                            <option value="RR">RR -Roraima</option>
+                                            <option value="SC">SC - Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="AlinhamentoEsquerda form-group">
+                                    <label>Tipo:</label>
+                                    <div class="input">
+                                        <input type="text" id="InputTipoEnd" name="" value="" class="form-control " maxlength="20" />
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button style="margin-top:22px" class="btn btn-info" onclick="AddEndereco()">Adicionar <i class="fas fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="panel-body">
+                            <table class="table table-hover" id="table_endereco">
+                                <thead>
+                                    <tr>
+
+                                        <th>
+                                            Endereço
+                                        </th>
+                                        <th>
+                                            Numero
+                                        </th>
+                                        <th>
+                                            Complemento
+                                        </th>
+                                        <th>
+                                            Bairro
+                                        </th>
+                                        <th>
+                                            Cidade
+                                        </th>
+                                        <th>
+                                            Estado
+                                        </th>
+                                        <th>
+                                            Tip. End
+                                        </th>
+                                        <th></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    @for (int i = 0; i < Model.ContatosPessoa.Where(x => x.CodigoTipo == 20 && x.TipoContato == "ENDERECO").Count(); i++)
+                                    {
+                                        var item = Model.ContatosPessoa.Where(x => x.CodigoTipo == 20 && x.TipoContato == "ENDERECO").ToList()[i];
+                                        <tr>
+
+
+                                            <td>@item.TextoContato</td>
+                                            <td>@item.NumeroEnd</td>
+                                            <td>@item.Complemento</td>
+                                            <td>@item.Bairro</td>
+                                            <td>@item.Cidade</td>
+                                            <td>@item.UF</td>
+                                            <td>@item.TipoEnd</td>
+                                            <td align="center">
+                                                <button class="btn btn-danger" href="#" onclick="fncRemoverContato(@Model.PessoaId,@item.ContatoId)" title="Remover">
+                                                    <i class="fas fa-trash-alt" style="font-size:15px"></i>
+                                                </button>
+                                            </td>
+                                            <td style="display:none">@item.ContatoId</td>
+                                            <td style="display:none">@item.CodigoTipo</td>
+                                            <td style="display:none">@item.CodigoAgp</td>
+
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">Contatos</div>
+                        <div class="panel-body">
+
+                            <div class="col-lg-12">
+
+                                <div class="col-md-3">
+                                    <div class="AlinhamentoEsquerda form-group">
+                                        <label>Tipo</label>
+                                        <div class="input">
+                                            <select name="InputSexo" class="form-control" id="InputTipCont">
+                                                <option value="10">Celular</option>
+                                                <option value="30">E-mail</option>
+                                                <option value="40">Site</option>
+                                                <option value="50">IM</option>
+                                                <option value="60">Telefone Fixo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="AlinhamentoEsquerda form-group">
+                                        <label>Contato</label>
+                                        <div class="input">
+
+                                            <input type="text" id="InputContato" name="" value="" class="form-control " />
+
+                                        </div><!-- /.input group -->
+                                    </div><!-- /.form group -->
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="AlinhamentoEsquerda form-group">
+                                        <label>Tipo do Contato</label>
+                                        <div class="input">
+                                            <select name="InputSexo" class="form-control" id="InputTipDoCont">
+                                                <option value="1">Pessoal</option>
+                                                <option value="2">Familia</option>
+                                                <option value="3">Trabalho</option>
+                                                <option value="3">Escola</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button style="margin-top:22px" class="btn btn-info" onclick="AddContato()">Adicionar <i class="fas fa-plus"></i></button>
+                                </div>
+
+                            </div>
+
+                            <table class="table table-hover" id="table_Contato">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Tipo
+                                        </th>
+                                        <th>
+                                            Contato
+                                        </th>
+                                        <th>
+                                            Tipo Contato
+                                        </th>
+                                        <th></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                        <th style="display:none"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    @for (int i = 0; i < Model.ContatosPessoa.Where(x => x.CodigoTipo != 20 && x.TipoContato != "ENDERECO").Count(); i++)
+                                    {
+                                        var item = Model.ContatosPessoa.Where(x => x.CodigoTipo != 20 && x.TipoContato != "ENDERECO").ToList()[i];
+                                        <tr>
+                                            <td>@item.TipoContato</td>
+                                            <td>@item.TextoContato</td>
+                                            <td>@item.TipoAgp</td>
+
+                                            <td align="center">
+                                                <button class="btn btn-danger" href="#" onclick="fncRemoverContato(@Model.PessoaId,@item.ContatoId)" title="Remover">
+                                                    <i class="fas fa-trash-alt" style="font-size:15px"></i>
+                                                </button>
+                                            </td>
+
+                                            <td style="display:none">@item.ContatoId</td>
+                                            <td style="display:none">@item.CodigoTipo</td>
+                                            <td style="display:none">@item.CodigoAgp</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <a href="../Home/Index" title="Cancelar" class="btn btn-danger">Cancelar</a>
+                    </div>
+
+                    <div class="btn-group" role="group">
+                        <a href="#" id="btnSalvar" class="btn btn-info" title="Salvar">Salvar </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
